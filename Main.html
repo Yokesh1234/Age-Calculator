@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Age Calculator</title>
+    <link rel="icon" href="https://th.bing.com/th/id/OIP.yOUGDnwEVfJIchkJwYbsnAHaHa?pid=ImgDet&rs=1" type="image/icon type">
+    <style>
+        .con{
+            border-style:none;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            padding: 12% 12% 12%;
+            margin-left: 30%;
+            margin-right: 20%;
+            width: 20%;
+            
+        }
+        .con h1{
+            text-align: center;
+        }
+        .con input{
+            width:100%;
+            padding:12px;
+            border:1px solid #ccc;
+            border-radius:10px;
+        }
+        .con button{
+            background-color: #5783db; /* Green */
+              border: none;
+             color: white;
+             padding: 10px 22px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 14px;
+              border-radius: 10px;margin-left: 80px;
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+    <h1>Age Calculator</h1>
+    <p>Enter your date of birth:</p>
+    <input type="date" id="birthdate"><br><br><br>
+    <button onclick="calculateAge()">Calculate</button>
+    <p id="result"></p>
+    </div>
+    <script>
+        function calculateAge() {
+            // Get the birthdate input value
+            var birthdateInput = document.getElementById("birthdate").value;
+            // Calculate the age
+            var birthdate = new Date(birthdateInput);
+            var today = new Date();
+            var age = today.getFullYear() - birthdate.getFullYear();
+            var monthDiff = today.getMonth() - birthdate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthdate.getDate())) {
+                age--;
+            }
+            // Display the result
+            document.getElementById("result").innerHTML = "You are " + age + " years old.";
+        }
+    </script>
+</body>
+</html>
